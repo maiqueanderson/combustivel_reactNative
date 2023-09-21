@@ -10,6 +10,7 @@ import { fetchUser } from '../redux/actions';
 
 import Calc from '../components/Main/Calc'
 import Resume from './Main/Resume';
+import Abastecer from './Main/Abastecer';
 
 const Tab = createBottomTabNavigator();
 const NullComponent = () => null;
@@ -33,8 +34,8 @@ const Main = ({ fetchUser }) => {
 
 
       <Tab.Screen
-        name="Resume"
-        component={Resume}
+        name="Abastecer"
+        component={Abastecer}
         options={{
           tabBarIcon: ({ color, size }) => (
             <Icon name='account-circle' size={26} color={color} />

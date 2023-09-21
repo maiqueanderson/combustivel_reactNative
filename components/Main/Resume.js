@@ -1,9 +1,8 @@
-import { View } from "react-native-web"
+import { View } from "react-native"
 
 const Resume = () =>{
     return(
-        <View>Resume works</View>
+        <View>Resume Works</View>
     )
 }
-
 export default Resume;
