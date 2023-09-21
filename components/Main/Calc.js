@@ -13,7 +13,7 @@ import { getDatabase } from "firebase/database";
 
 
 const Calc = ({  currentUser }) => {
-  
+
 
 
 
@@ -50,8 +50,10 @@ const Calc = ({  currentUser }) => {
     fetchUser();
   }, []);
 
-console.log(id, data);
+console.log(id, data,);
 
+const calc =  parseFloat(data?.gas) + parseFloat(data?.alc)
+console.log(calc)
 
   return (
     <View style={styles.container}>
@@ -64,7 +66,19 @@ console.log(id, data);
           />
         </Card>
       </View>
+
+      <View style={styles.info}>
+        <Card>
+          <Card.Title
+            title='soma dos combustiveis'
+            subtitle={calc}
+            
+          />
+        </Card>
+      </View>
+
     </View>
+
    )
 
 
