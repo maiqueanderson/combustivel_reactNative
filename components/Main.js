@@ -1,6 +1,4 @@
 import React, { useEffect } from 'react';
-import { View, Text } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -11,6 +9,7 @@ import { fetchUser } from '../redux/actions';
 import Calc from '../components/Main/Calc'
 import Resume from './Main/Resume';
 import Abastecer from './Main/Abastecer';
+import Historic from './Main/Historic';
 
 const Tab = createBottomTabNavigator();
 const NullComponent = () => null;
@@ -27,7 +26,7 @@ const Main = ({ fetchUser }) => {
         component={Calc}
         options={{
           tabBarIcon: ({ color, size }) => (
-            <Icon name='newspaper-variant' size={26} color={color} />
+            <Icon name='calculator' size={26} color={color} />
           )
         }}
       />
@@ -38,10 +37,21 @@ const Main = ({ fetchUser }) => {
         component={Abastecer}
         options={{
           tabBarIcon: ({ color, size }) => (
-            <Icon name='account-circle' size={26} color={color} />
+            <Icon name='fuel' size={26} color={color} />
           )
         }}
       />
+
+<Tab.Screen
+        name="Historico"
+        component={Historic}
+        options={{
+          tabBarIcon: ({ color, size }) => (
+            <Icon name='fuel' size={26} color={color} />
+          )
+        }}
+      />
+
     </Tab.Navigator>
   )
 }

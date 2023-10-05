@@ -1,9 +1,12 @@
-// userReducer.js
 
-import { USER_STATE_CHANGE } from "../constants";
+
+import { USER_STATE_CHANGE, DATA_USER_CHANGE } from "../constants";
+
 
 const initialState = {
-  currentUser: null, // Inicialize currentUser como null ou com um valor padrão apropriado
+  currentUser: null, 
+  currentData: null,
+  abast: [],
 };
 
 const userReducer = (state = initialState, action) => {
@@ -12,6 +15,11 @@ const userReducer = (state = initialState, action) => {
       return {
         ...state,
         currentUser: action.currentUser,
+      };
+      case DATA_USER_CHANGE:
+      return {
+        ...state,
+        currentData: action.currentData,
       };
     default:
       return state;

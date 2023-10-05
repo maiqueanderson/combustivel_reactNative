@@ -39,7 +39,7 @@ const Abastecer = () => {
         valorTotal: valorTotal,
         valorLitro: valorLitro,
         tipoCombustivel: value,
-        data: new Date(), // Adicione a data atual, se necessário
+        date: new Date(), 
       });
 
       console.log('Valor salvo com sucesso no Firestore!');

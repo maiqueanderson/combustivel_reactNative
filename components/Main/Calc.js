@@ -4,40 +4,18 @@ import { View, StyleSheet, Button } from "react-native";
 import { TextInput } from "react-native-paper";
 
 import { bindActionCreators } from "redux";
-import { getAuth, onAuthStateChanged } from "firebase/auth";
+
 import { fetchUser } from "../../redux/actions";
-import { app } from "../../database/firebaseConfig";
+
 import { connect, useSelector } from "react-redux";
 
-const Calc = ({ currentUser }) => {
+const Calc = () => {
   const [alcPrice, setAlcPrice] = React.useState("");
   const [gasPrice, setGasPrice] = React.useState("");
 
-  const [id, setId] = useState(null);
-  const [user, setUser] = useState(null);
   const [result, setResult] = useState('Insira o preço dos combustiveis');
 
   const data = useSelector((state) => state.userState.currentUser);
-
-  useEffect(() => {
-    const auth = getAuth(app);
-
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
-        const uid = user.uid;
-        setId(uid);
-        setUser(currentUser);
-      } else {
-        fetchUserInfo();
-        console.log("usuario não está logado");
-      }
-    });
-  }, []);
-
-  useEffect(() => {
-    fetchUser();
-  }, []);
-
 
   const handleClick = async () => {
     try {
