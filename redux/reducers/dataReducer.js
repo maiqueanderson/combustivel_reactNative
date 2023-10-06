@@ -2,7 +2,7 @@
 import { DATA_USER_CHANGE } from '../constants';
 
 const initialState = {
-  abast: [], // Inicialize abast como uma matriz vazia
+  abast: [], 
 };
 
 const dataReducer = (state = initialState, action) => {
@@ -10,7 +10,7 @@ const dataReducer = (state = initialState, action) => {
     case DATA_USER_CHANGE:
       return {
         ...state,
-        abast: action.abast, // Atualize abast com os novos dados
+        abast: action.abast, 
       };
     default:
       return state;

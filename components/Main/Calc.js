@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Card } from "react-native-paper";
 import { View, StyleSheet, Button } from "react-native";
-import { TextInput } from "react-native-paper";
+import { TextInput, Dialog, Portal, Text, PaperProvider, useTheme } from "react-native-paper";
 
 import { bindActionCreators } from "redux";
 
@@ -9,9 +9,18 @@ import { fetchUser } from "../../redux/actions";
 
 import { connect, useSelector } from "react-redux";
 
+
+
 const Calc = () => {
-  const [alcPrice, setAlcPrice] = React.useState("");
-  const [gasPrice, setGasPrice] = React.useState("");
+  const [alcPrice, setAlcPrice] = useState("");
+  const [gasPrice, setGasPrice] = useState("");
+  const [visible, setVisible] = useState(false);
+
+  const theme = useTheme();
+
+  const showDialog = () => setVisible(true);
+
+  const hideDialog = () => setVisible(false);
 
   const [result, setResult] = useState('Insira o preço dos combustiveis');
 
@@ -32,6 +41,7 @@ const Calc = () => {
       }
 
       console.log(calcAlc , calcGas);
+     showDialog();
 
     } catch (error) {
       console.log('erro ao pegar o valor', error);
@@ -39,7 +49,7 @@ const Calc = () => {
   };
 
   return (
-    <View style={styles.container}>
+    <View >
       <View style={styles.info}>
         <Card>
           <Card.Title title={data?.name} subtitle={data?.car} />
@@ -69,6 +79,22 @@ const Calc = () => {
       <View style={styles.result}>
        {result}
       </View>
+
+      <PaperProvider >
+      <View>
+        <Portal>
+          <Dialog style={{ backgroundColor: theme.colors.background }} visible={visible} onDismiss={hideDialog} >
+            <Dialog.Title>Resultado</Dialog.Title>
+            <Dialog.Content>
+              <Text variant="bodyMedium">{result}</Text>
+            </Dialog.Content>
+            <Dialog.Actions>
+              <Text onPress={hideDialog}>Ok</Text>
+            </Dialog.Actions>
+          </Dialog>
+        </Portal>
+      </View>
+    </PaperProvider>
 
     </View>
 

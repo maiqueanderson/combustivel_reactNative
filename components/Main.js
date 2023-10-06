@@ -47,7 +47,7 @@ const Main = ({ fetchUser }) => {
         component={Historic}
         options={{
           tabBarIcon: ({ color, size }) => (
-            <Icon name='fuel' size={26} color={color} />
+            <Icon name='history' size={26} color={color} />
           )
         }}
       />

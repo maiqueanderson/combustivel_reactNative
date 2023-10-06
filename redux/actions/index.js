@@ -51,7 +51,7 @@ export const fetcData = () => {
       const abast = querySnapshot.docs.map((doc) => {
         const data = doc.data();
         const id = doc.id;
-        console.log(data)
+        console.log(data, id)
         return { id, ...data };
       });
 
